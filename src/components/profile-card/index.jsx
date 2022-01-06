@@ -17,13 +17,13 @@ function ProfileCard() {
           border-radius: 50%;
         }
         .title {
-          width: calc(100% - 144px);
+          width: calc(100% - 80px);
           height: 24px;
           margin-top: 12px;
         }
         .sub-title {
           width: 100%;
-          height: 64px;
+          height: 120px;
           margin-top: 12px;
         }
       `}

@@ -10,9 +10,8 @@ function Landing() {
         .outer-box {
           width: 100%;
           height: 100%;
-          background: linear-gradient(320deg,#f27121,#e94057,#8a2387);
+          background: #fafafa;
           position: relative;
-          padding: 16px;
         }
         .inner-box {
           width: 100%;
@@ -20,10 +19,7 @@ function Landing() {
           position: relative;
           display: flex;
           background: rgba(255, 255, 255, 0.2);
-          border-radius: 16px;
-          box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
           backdrop-filter: blur(5px);
-          border: 1px solid rgba(255, 255, 255, 0.3);
         }
         .left-panel {
           display: flex;
@@ -37,6 +33,22 @@ function Landing() {
           padding: 12px;
           position: relative;
           padding-left: 0px;
+        }
+        @media (max-width: 981px) {
+          .inner-box {
+            flex-direction: column;
+            overflow: auto;
+          }
+          .left-panel {
+            height: unset;
+            width: 100%;
+            flex-direction: column;
+          }
+          .right-panel {
+            height: unset;
+            width: 100%;
+            padding-left: 12px;
+          }
         }
       `}
       </style>

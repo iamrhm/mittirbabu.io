@@ -6,20 +6,17 @@ function Content() {
       <style jsx>
       {`
         .content-container {
-          width: 100%;
-          height: 100%;
           display: flex;
           flex-direction: column;
-          border: 1px solid rgba(255, 255, 255, 0.3);
+          width: 100%;
+          height: 100%;
+          border-radius: 4px;
+          border: 1px solid #D1D5DB;
           background: #fff;
-          border-radius: 8px;
-          border-bottom-right-radius: 16px;
-          padding: 14px;
-          padding-bottom: 18px;
         }
         .header {
           width: 100%;
-          height: 240px;
+          max-height: 240px;
           margin-bottom: 32px;
         }
         .image-holder {
@@ -27,7 +24,9 @@ function Content() {
         }
         .timeline-image {
           width: 100%;
-          height: 220px;
+          height: 160px;
+          border-bottom-left-radius: 0;
+          border-bottom-right-radius: 0;
         }
         .image-box {
           width: 68px;
@@ -36,7 +35,9 @@ function Content() {
           left: 16px;
           bottom: -32px;
           border: 2px solid #ffff;
-          background-color: #ecf1ff;
+        }
+        .padded-box {
+          padding: 0 14px;
         }
         .input-box-container {
           height: 60px;
@@ -63,13 +64,15 @@ function Content() {
           min-height: 120px;
           margin-top: 24px;
           overflow: auto;
-          font-family: 'Nunito', sans-serif;
           font-size: 16px;
           color: rgba(0,0,0,.84);
           word-break: break-word;
           display: flex;
           flex-direction: column;
           align-items: center;
+        }
+        @media (max-width: 981px) {
+
         }
       `}
       </style>
@@ -81,10 +84,12 @@ function Content() {
             <div className="image-box round loader" />
           </div>
         </div>
-        <div className="input-box-container rectangle">
-          <div className="user-img round loader"></div>
-          <div className="input-box">
-            What do you have in mind?
+        <div className="padded-box">
+          <div className="input-box-container rectangle">
+            <div className="user-img round loader"></div>
+            <div className="input-box">
+              What do you have in mind?
+            </div>
           </div>
         </div>
         <div className="dummy-text-box">

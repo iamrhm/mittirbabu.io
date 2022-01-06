@@ -9,13 +9,20 @@ function Sidebar() {
           .sidebar {
             width: 50%;
             height: 100%;
-            border-right: 1px solid rgba(209,213,219,.3);
+            border-right: 1px solid #D1D5DB;
             display: flex;
             flex-direction: column;
             padding: 0 16px;
-            border-top-left-radius: 12px;
-            border-bottom-left-radius: 12px;
             overflow: hidden;
+            background: #FFFF;
+          }
+          @media (max-width: 981px) {
+            .sidebar {
+              width: 100%;
+              overflow: auto;
+              height: unset;
+              flex-shrink: 0;
+            }
           }
         `}
       </style>

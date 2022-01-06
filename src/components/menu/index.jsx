@@ -6,7 +6,7 @@ function Menu() {
         .menu-box {
           display: flex;
           flex-direction: column;
-          padding-top: 124px;
+          padding-top: 64px;
         }
         .option-box {
           width: 100%;
@@ -34,6 +34,11 @@ function Menu() {
         .option-count {
           height: 14px;
           width: 80%;
+        }
+        @media (max-width: 981px) {
+          .menu-box {
+            padding-top: 24px;
+          }
         }
       `}
       </style>

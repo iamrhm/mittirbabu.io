@@ -57,6 +57,15 @@ function PostOverview() {
           height: 24px;
           width: 100px;
         }
+        @media (max-width: 981px) {
+          .post-overview {
+            width: 100%;
+            border-left: 0;
+            border-right: 0;
+            border-bottom: 0;
+            border-radius: 0;
+          }
+        }
       `}
       </style>
       <div className="post-overview rectangle">
