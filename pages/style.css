@@ -1,0 +1,33 @@
+body, #__next {
+  margin: 0;
+  padding: 0;
+  font-family: 'Nunito', sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  box-sizing: border-box;
+}
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
+    monospace;
+}
+
+#__next {
+  width: 100%;
+  height: 100vh;
+  overflow: hidden;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+/* Common Styles */
+.loader {
+  background-color: #00000026;
+}
+.rectangle {
+  border-radius: 4px;
+}
+.round {
+  border-radius: 50%;
+}
