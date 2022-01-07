@@ -1,4 +1,4 @@
-import PostOverview from "../post-overview";
+import PostOverview from "./overview";
 
 function Content() {
   return (
@@ -29,8 +29,8 @@ function Content() {
           border-bottom-right-radius: 0;
         }
         .image-box {
-          width: 68px;
-          height: 68px;
+          width: 72px;
+          height: 72px;
           position: absolute;
           left: 16px;
           bottom: -32px;

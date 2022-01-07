@@ -5,6 +5,7 @@ body, #__next {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   box-sizing: border-box;
+  background: #F1F4F8;
 }
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",

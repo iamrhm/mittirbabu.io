@@ -24,18 +24,22 @@ function PostOverview() {
         .user-name {
           height: 24px;
           min-width: 124px;
-          margin-left: 24px;
+          margin-left: 12px;
         }
         .post-description {
           font-size: 15px;
           color: #2F363F;
-          padding-bottom: 12px;
+          padding: 12px 0;
+        }
+        .post-meta-title {
+          width: 320px;
+          height: 24px;
         }
         .asset-overview {
           display: flex;
           flex-direction: column;
         }
-        .image-banner {
+        .meta-image-banner {
           width: 100%;
           height: 313px;
         }
@@ -48,12 +52,12 @@ function PostOverview() {
           flex-direction: column;
           justify-content: space-between;
         }
-        .title {
+        .meta-title {
           height: 24px;
           min-width: 180px;
           margin-bottom: 8px;
         }
-        .sub-title {
+        .meta-sub-title {
           height: 24px;
           width: 100px;
         }
@@ -74,17 +78,20 @@ function PostOverview() {
           <div className="user-name rectangle loader"></div>
         </div>
         <div className="post-description">
-          Do eu sint adipisicing sunt eiusmod. Id ullamco labore cillum culpa sit do Lorem ex ad.
-          Velit enim occaecat tempor fugiat nulla anim. Sint sunt Lorem ea amet eiusmod.
-          Velit quis nostrud incididunt dolore et irure irure anim veniam elit commodo magna.
-          Culpa non irure proident amet cupidatat eiusmod Lorem. Non magna duis id Lorem officia id.
+          <div className="post-meta-title rectangle loader"></div>
+          <p className="post-content">
+            Do eu sint adipisicing sunt eiusmod. Id ullamco labore cillum culpa sit do Lorem ex ad.
+            Velit enim occaecat tempor fugiat nulla anim. Sint sunt Lorem ea amet eiusmod.
+            Velit quis nostrud incididunt dolore et irure irure anim veniam elit commodo magna.
+            Culpa non irure proident amet cupidatat eiusmod Lorem. Non magna duis id Lorem officia id.
+          </p>
         </div>
         <div className="asset-overview">
-          <div className="image-banner rectangle loader">
+          <div className="meta-image-banner rectangle loader">
           </div>
           <div className="meta-container">
-            <div className="title rectangle loader"></div>
-            <div className="sub-title rectangle loader"></div>
+            <div className="meta-title rectangle loader"></div>
+            <div className="meta-sub-title rectangle loader"></div>
           </div>
         </div>
       </div>

@@ -1,4 +1,3 @@
-import Sidebar from "../../components/sidebar";
 import IntroPanel from "../../components/intro";
 import Content from "../../components/content";
 
@@ -9,9 +8,10 @@ function Landing() {
       {`
         .outer-box {
           width: 100%;
+          max-width: 1134px;
           height: 100%;
-          background: #fafafa;
           position: relative;
+          margin: 0 auto;
         }
         .inner-box {
           width: 100%;
@@ -23,12 +23,12 @@ function Landing() {
         }
         .left-panel {
           display: flex;
-          width: 50%;
+          width: 40%;
           height: 100%;
           position: relative;
         }
         .right-panel {
-          width: 50%;
+          width: 60%;
           height: 100%;
           padding: 12px;
           position: relative;
@@ -55,7 +55,6 @@ function Landing() {
       <div className="outer-box">
         <div className="inner-box">
           <div className="left-panel">
-            <Sidebar />
             <IntroPanel />
           </div>
           <div className="right-panel">
