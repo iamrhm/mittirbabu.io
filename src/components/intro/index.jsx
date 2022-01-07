@@ -1,4 +1,5 @@
 import Profile from '../profile';
+import Breadcrumb from '../breadcrumb';
 
 function IntroPanel() {
   return (
@@ -20,7 +21,7 @@ function IntroPanel() {
           background: #fff;
         }
         .header {
-          padding: 12px 12px 24px 12px;
+          padding: 24px 12px;
           width: 100%;
         }
         .intro-options {
@@ -68,6 +69,7 @@ function IntroPanel() {
       </style>
       <div className="intro-panel">
         <div className="intro-panel-inner">
+          <Breadcrumb />
           <div className="header">
             <Profile />
           </div>
