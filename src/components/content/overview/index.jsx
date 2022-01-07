@@ -22,7 +22,7 @@ function PostOverview() {
           height: 36px;
         }
         .user-name {
-          height: 24px;
+          height: 16px;
           min-width: 124px;
           margin-left: 12px;
         }

@@ -7,7 +7,7 @@ function Profile() {
       {`
         .user-detail {
           display: flex;
-          align-items: end;
+          align-items: flex-end;
         }
         .user-image {
           width: 124px;

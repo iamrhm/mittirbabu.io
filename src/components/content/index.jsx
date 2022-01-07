@@ -24,17 +24,35 @@ function Content() {
         }
         .timeline-image {
           width: 100%;
-          height: 160px;
+          height: 132px;
           border-bottom-left-radius: 0;
           border-bottom-right-radius: 0;
         }
         .image-box {
-          width: 72px;
-          height: 72px;
+          width: 120px;
+          height: 120px;
           position: absolute;
           left: 16px;
-          bottom: -32px;
+          bottom: -100px;
           border: 2px solid #ffff;
+        }
+        .content-intro {
+          width: 100%;
+          min-height: 74px;
+          padding-left: 148px;
+          padding-top: 24px;
+          display: flex;
+          flex-direction: column;
+          justify-content: space-between;
+          align-items: flex-start;
+        }
+        .content-title {
+          min-width: 184px;
+          height: 18px;
+        }
+        .content-sub-title {
+          min-width: 100px;
+          height: 18px;
         }
         .padded-box {
           padding: 0 14px;
@@ -71,8 +89,9 @@ function Content() {
           flex-direction: column;
           align-items: center;
         }
-        @media (max-width: 981px) {
-
+        .content-category {
+          width: 120px;
+          height: 24px;
         }
       `}
       </style>
@@ -82,6 +101,10 @@ function Content() {
             <div className="timeline-image rectangle loader">
             </div>
             <div className="image-box round loader" />
+          </div>
+          <div className="content-intro">
+            <div className="content-title rectangle loader"></div>
+            <div className="content-sub-title rectangle loader"></div>
           </div>
         </div>
         <div className="padded-box">

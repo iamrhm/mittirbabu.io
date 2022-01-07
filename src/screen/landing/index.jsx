@@ -18,8 +18,6 @@ function Landing() {
           height: 100%;
           position: relative;
           display: flex;
-          background: rgba(255, 255, 255, 0.2);
-          backdrop-filter: blur(5px);
         }
         .left-panel {
           display: flex;
