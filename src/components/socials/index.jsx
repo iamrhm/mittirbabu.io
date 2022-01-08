@@ -16,8 +16,8 @@ function Socials() {
       `}
       </style>
       <div className="socials">
-        {[1,2,3,4].map((data) => (
-          <div className="social-box">
+        {[1,2,3,4].map((data, index) => (
+          <div className="social-box" key={index}>
             <div className="social-icon round">
             </div>
           </div>

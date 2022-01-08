@@ -1,4 +1,5 @@
 import PostOverview from "./overview";
+import InputBox from '../inputbox';
 
 function Content() {
   return (
@@ -111,14 +112,14 @@ function Content() {
           <div className="input-box-container rectangle">
             <div className="user-img round loader"></div>
             <div className="input-box">
-              What do you have in mind?
+              <InputBox />
             </div>
           </div>
         </div>
         <div className="dummy-text-box">
           {
-            [1,2,3,4].map((data) => (
-              <PostOverview />
+            [1,2,3,4].map((data, index) => (
+              <PostOverview key={index} />
             ))
           }
         </div>

@@ -76,8 +76,8 @@ function IntroPanel() {
           <div className="intro-options">
             <div className="intro-category">
             {
-              [1,2,3,4].map((data) => (
-                <div className="category-box rectangle loader" />
+              [1,2,3,4].map((data, index) => (
+                <div className="category-box rectangle loader" key={index} />
               ))
             }
             </div>
@@ -85,8 +85,8 @@ function IntroPanel() {
           </div>
         <div className="info-card-holder">
           {
-            [1,2,3,4].map((data) => (
-              <div className="info-card rectangle loader">
+            [1,2,3,4].map((data, index) => (
+              <div className="info-card rectangle loader" key={index}>
               </div>
             ))
           }
