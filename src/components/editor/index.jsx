@@ -40,7 +40,7 @@ function InputEditor({
             .suggestion-list-wrapper {
               position: absolute;
               width: 100%;
-              z-index: 1;
+              z-index: 10001;
               height: 200px;
               left: 0;
               overflow: hidden;
@@ -122,7 +122,6 @@ function InputEditor({
     const offset = 24 + (2 * height);
     const listTop = editorContainerRef.current ?
     Math.abs(editorContainerRef.current.getBoundingClientRect().top - bottom - offset) : bottom;
-
     return (
       <>
         <style jsx>
@@ -130,7 +129,7 @@ function InputEditor({
             .suggestion-list-container-hint {
               position: absolute;
               width: 100%;
-              z-index: 1;
+              z-index: 1001;
               left: 0;
               padding: 0 8px;
             }

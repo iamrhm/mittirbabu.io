@@ -66,10 +66,13 @@ function InputBox() {
             width: 100%;
             min-height: 221px;
             max-height: 452px;
-            overflow-y: auto;
             padding: 14px 24px;
             color: #2F363F;
-            position: relative;
+          }
+          .input-container :global(.public-DraftEditor-content) {
+            height: 100%;
+            max-height: 448px;
+            overflow-y: auto;
           }
           .footer {
             background: #F1F4F8;
@@ -120,6 +123,7 @@ function InputBox() {
               padding: 16px;
               border-radius: unset;
               border-top: 1px solid #E2E5E9;
+              z-index: 10001;
             }
             .user-info-box {
               width: 100%;
@@ -148,7 +152,7 @@ function InputBox() {
             .input-container {
               max-height: ${maxHeight}px;
             }
-            .input-container :global(#editor, .editor-container) {
+            .input-container :global(.public-DraftEditor-content) {
               height: 100%;
               max-height: ${maxHeight - 24}px;
               overflow-y: auto;
