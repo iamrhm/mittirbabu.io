@@ -2,18 +2,16 @@ import React from 'react';
 
 import Modal from '../modal';
 import Editor from '../editor';
-
-
-const mWebMaxHeight = 220; // Maximum height for iOS devices inputbox for floating keyboard
+import LinkPreview from '../linkpreview';
 
 function InputBox() {
   const [showEditor, toggleEditor] = React.useState(false);
   const [setTrigger, toggleTrigger] = React.useState(false);
-  const [editorState, setEditorState] = React.useState();
-  const [previewLink, setPreviewLink] = React.useState(null);
-  const [maxHeight, setMaxHeight] = React.useState(mWebMaxHeight);
+  const [editorState, setEditorState] = React.useState(null);
+  const [previewList, setPreviewList] = React.useState(new Map());
+  const [maxHeight, setMaxHeight] = React.useState(220);
   const editorContainerRef = React.useRef();
-  const trigger = '₹';
+  const trigger = '@';
 
   const addTriggerAfterCb = () => {
     toggleTrigger(false);
@@ -30,6 +28,38 @@ function InputBox() {
       setMaxHeight(innerHeight);
     }
   };
+
+  const updatePreviewList = (type, data) => {
+    let newPreviewList = previewList;
+    switch (type) {
+      case 'add':
+        newPreviewList.set(data.offsetKey, {
+          url: data.url,
+          showPreview: true,
+        });
+        setPreviewList(
+          new Map(newPreviewList)
+        );
+          break;
+        case 'delete':
+          newPreviewList.delete(data.offsetKey);
+          setPreviewList(
+            new Map(newPreviewList)
+          );
+          break;
+        case 'toggleShow':
+          const currState = newPreviewList.get(data.offsetKey);
+          newPreviewList.set(data.offsetKey, {
+            url: currState.url,
+            showPreview: !currState.showPreview,
+          });
+          setPreviewList(
+            new Map(newPreviewList)
+          );
+          break;
+        default: break;
+    }
+  }
 
   return (
     <>
@@ -71,7 +101,7 @@ function InputBox() {
           }
           .input-container :global(.public-DraftEditor-content) {
             height: 100%;
-            max-height: 448px;
+            max-height: 434px;
             overflow-y: auto;
           }
           .footer {
@@ -187,8 +217,12 @@ function InputBox() {
                 ref={editorContainerRef}
                 addTriggerAfterCb={addTriggerAfterCb}
                 setEditorState={setEditorState}
-                setPreviewLink={setPreviewLink}
+                setPreviewLink={updatePreviewList}
                 onFocusCb={handleResize}
+              />
+              <LinkPreview
+                previewList={previewList}
+                toggleShowPreview={updatePreviewList}
               />
             </div>
             <div className="footer">

@@ -25,5 +25,20 @@ export const getFilteredSuperHeros = async (query) => {
 }
 
 export const getURLMetaInfo =  async (url) => {
-  // mock api call
+  try {
+  const data = await axios.get(`api/fetchMeta`, {
+    params: {
+      url: url
+    }
+  });
+  return {
+    'type': data.data['og:type'],
+    'url': data.data['og:url'],
+    'title': data.data['title'],
+    'description': data.data['description'],
+    'image': data.data['og:image'],
+  };
+  } catch(e) {
+    console.log(e);
+  }
 }
