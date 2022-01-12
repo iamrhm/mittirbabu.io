@@ -46,7 +46,7 @@ function InputBox() {
         newPreviewList.set(data.offsetKey, {
           url: data.url,
           showPreview: true,
-          idTs: `${Date.now()}${newPreviewList.size}`,
+          idTs: Number(`${Date.now()}${newPreviewList.size}`),
         });
         setPreviewList(
           new Map(newPreviewList)
