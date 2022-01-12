@@ -8,9 +8,11 @@ const LinkPreview = ({ previewList, toggleShowPreview }) => {
     data: null,
     offsetKey: null,
   });
+  const [isLoading, setLoading] = React.useState(false);
 
   const fetchPreview = async (previewList) => {
     if(previewList.size) {
+      setLoading(true);
       const firstLink = [...previewList]
       .map(([key, value]) => ({
         offsetKey: key,
@@ -18,9 +20,19 @@ const LinkPreview = ({ previewList, toggleShowPreview }) => {
         showPreview: value.showPreview
       })).filter(data => data.showPreview)[0];
       if (firstLink) {
-        const { url } = firstLink;
-        const resp = await getURLMetaInfo(url);
-        setMetaData({data: resp, offsetKey: firstLink.offsetKey});
+        try {
+          const { url } = firstLink;
+          const resp = await getURLMetaInfo(url);
+          setMetaData({data: resp, offsetKey: firstLink.offsetKey});
+        } catch(e) {
+          setMetaData({data: {
+            image: '',
+            title: 'Failed to load',
+            description: 'Failed to load'
+          }, offsetKey: firstLink.offsetKey});
+        } finally {
+          setLoading(false);
+        }
       } else {
         setMetaData({data: null, offsetKey: null});
       }
@@ -30,7 +42,7 @@ const LinkPreview = ({ previewList, toggleShowPreview }) => {
   }
 
   React.useEffect(() => {
-    if(previewList.size) {
+    if(previewList) {
       fetchPreview(previewList);
     }
   }, [previewList]);
@@ -90,33 +102,66 @@ const LinkPreview = ({ previewList, toggleShowPreview }) => {
           justify-content: center;
           align-items: center;
         }
+        .dummy-title {
+          width: 140px;
+          height: 24px;
+        }
+        .dummy-sub-title {
+          width: 80px;
+          height: 24px;
+        }
+        @media (max-width: 981px) {
+          .desktop--only {
+            display: none !important;
+          }
+        }
+        @media (min-width: 981px) {
+          .mob--only {
+            display: none !important;
+          }
+        }
       `}
     </style>
     {
-      metaData.data && (
+      isLoading ? (<>
       <div className="asset-overview-container">
-        <span className="delete-icon" onClick={() => {
-          toggleShowPreview('toggleShow', {
-            offsetKey: metaData.offsetKey
-          });
-        }}>
-          <DeleteIcon />
-        </span>
-        <a className="asset-overview" href={metaData.url}>
-          <div className="meta-image-banner rectangle">
-            <img src={metaData.data.image} className="meta-image-banner"/>
+        <div className="meta-image-banner rectangle loader">
+        </div>
+        <div className="meta-container">
+          <div className="meta-title dummy-title rectangle loader">
           </div>
-          <div className="meta-container">
-            <div className="meta-title rectangle">
-              {metaData.data.title}
-            </div>
-            <div className="meta-sub-title rectangle">
-              {metaData.data.description}
-            </div>
+          <div className="meta-sub-title dummy-sub-title rectangle loader">
           </div>
-        </a>
+        </div>
       </div>
-      )
+      </>) : (<>
+        {
+          metaData.data && (
+          <div className="asset-overview-container">
+            <span className="delete-icon" onClick={() => {
+              toggleShowPreview('toggleShow', {
+                offsetKey: metaData.offsetKey
+              });
+            }}>
+              <DeleteIcon />
+            </span>
+            <a className="asset-overview" href={metaData.url}>
+              <div className="meta-image-banner rectangle">
+                <img src={metaData.data.image} className="meta-image-banner"/>
+              </div>
+              <div className="meta-container">
+                <div className="meta-title rectangle">
+                  {metaData.data.title}
+                </div>
+                <div className="meta-sub-title rectangle">
+                  {metaData.data.description}
+                </div>
+              </div>
+            </a>
+          </div>
+          )
+        }
+      </>)
     }
     </>
   );

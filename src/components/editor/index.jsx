@@ -13,10 +13,11 @@ function InputEditor({
   setEditorState = () => {},
   setPreviewLink = () => {},
   onFocusCb = () => {},
+  addMentionCb = () => {},
 }) {
   const fetchSuggestions = async (searchText) => {
     searchText = searchText.replace(trigger, '')
-    .trim().toLowerCase();
+    .toLowerCase();
     if (searchText.length >= 3) {
       if(searchText.length <= searchText.trim().length + 1) {
         const suggestions = await getFilteredSuperHeros(searchText);
@@ -184,6 +185,7 @@ function InputEditor({
       addTriggerAfterCb={addTriggerAfterCb}
       setPreviewLink={setPreviewLink}
       onFocusCb={onFocusCb}
+      addMentionCb={addMentionCb}
     />
   )
 }

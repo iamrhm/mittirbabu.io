@@ -1,5 +1,8 @@
 import axios from "axios";
+import linkifyIt from 'linkify-it';
+import tlds from 'tlds';
 
+const linkify = linkifyIt().tlds(tlds);
 const ACCESS_TOKEN = '451144149941482';
 const GET_SUPERHERO_LIST = "/search";
 
@@ -25,10 +28,12 @@ export const getFilteredSuperHeros = async (query) => {
 }
 
 export const getURLMetaInfo =  async (url) => {
+  const matchArr = linkify.match(url);
+  const href = matchArr && matchArr[0] ? matchArr[0].url : null;
   try {
   const data = await axios.get(`api/fetchMeta`, {
     params: {
-      url: url
+      url: href
     }
   });
   return {
