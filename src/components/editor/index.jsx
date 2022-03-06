@@ -1,39 +1,46 @@
-import React from 'react';
+import React from "react";
 
-import { getFilteredSuperHeros } from '../../services';
-import SuperheroEditor from '../../../superheroeditor';
-import SuperheroCard from '../superherocard';
-import CloseIcon from '../icons/close-icon';
+import { getFilteredSuperHeros } from "../../services";
+import SuperheroEditor from "../../../superheroeditor";
+import SuperheroCard from "../superherocard";
+import CloseIcon from "../icons/close-icon";
 
 function InputEditor({
   editorContainerRef = {},
-  trigger = '@',
+  trigger = "@",
   setTrigger = false,
   addTriggerAfterCb = () => {},
   setEditorState = () => {},
   setPreviewLink = () => {},
   onFocusCb = () => {},
-  addMentionCb = () => {},
+  addMentionCb = () => {}
 }) {
   const fetchSuggestions = async (searchText) => {
-    searchText = searchText.replace(trigger, '')
-    .toLowerCase();
+    searchText = searchText.replace(trigger, "").toLowerCase();
     if (searchText.length >= 3) {
-      if(searchText.length <= searchText.trim().length + 1) {
+      if (searchText.length <= searchText.trim().length + 1) {
         const suggestions = await getFilteredSuperHeros(searchText);
         return { suggestions, showHint: false };
       }
       return { suggestions: [], showHint: false };
     }
     return { suggestions: [], showHint: true };
-  }
+  };
 
   const renderSuggestions = (
-    {bottom, top, height} , suggestions, onClose, handleAddMention
+    { bottom, top, height },
+    suggestions,
+    onClose,
+    handleAddMention
   ) => {
-    const offset = 24 + (2 * height);
-    const listTop = editorContainerRef.current ?
-    Math.abs(editorContainerRef.current.getBoundingClientRect().top - bottom - offset) : bottom;
+    const offset = 24 + 2 * height;
+    const listTop = editorContainerRef.current
+      ? Math.abs(
+          editorContainerRef.current.getBoundingClientRect().top -
+            bottom -
+            offset
+        )
+      : bottom;
     return (
       <>
         <style jsx>
@@ -52,8 +59,8 @@ function InputEditor({
               height: 200px;
               border-radius: 8px;
               box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.06);
-              border: 1px solid #E2E5E9;
-              background: #F9FAFC;
+              border: 1px solid #e2e5e9;
+              background: #f9fafc;
             }
             .suggestion-header {
               width: 100%;
@@ -65,7 +72,7 @@ function InputEditor({
             .hero-tag {
               font-size: 12px;
               padding: 4px 8px;
-              border: 1px solid #D1D5DB;
+              border: 1px solid #d1d5db;
               border-radius: 100px;
               background: #fff;
             }
@@ -78,7 +85,7 @@ function InputEditor({
               cursor: pointer;
             }
             .item:hover {
-              background: #EBEEF5;
+              background: #ebeef5;
             }
           `}
         </style>
@@ -92,37 +99,37 @@ function InputEditor({
         <div className="suggestion-list-wrapper">
           <div className="suggestion-list-container">
             <div className="suggestion-header">
-              <span className="hero-tag">
-                Super Hero
-              </span>
+              <span className="hero-tag">Super Hero</span>
               <span className="close-icon" onClick={onClose}>
                 <CloseIcon />
               </span>
             </div>
-            <div
-              className="item-container">
-              {
-                suggestions.map((data) => (
-                  <div
-                    className="item"
-                    key={data.id}
-                    onClick={() => handleAddMention(data)}
-                  >
-                    <SuperheroCard {...data} />
-                  </div>
-                ))
-              }
+            <div className="item-container">
+              {suggestions.map((data) => (
+                <div
+                  className="item"
+                  key={data.id}
+                  onClick={() => handleAddMention(data)}
+                >
+                  <SuperheroCard {...data} />
+                </div>
+              ))}
             </div>
           </div>
         </div>
       </>
-    )
-  }
+    );
+  };
 
-  const renderHint = ({bottom, top, height}, onClose) => {
-    const offset = 24 + (2 * height);
-    const listTop = editorContainerRef.current ?
-    Math.abs(editorContainerRef.current.getBoundingClientRect().top - bottom - offset) : bottom;
+  const renderHint = ({ bottom, top, height }, onClose) => {
+    const offset = 24 + 2 * height;
+    const listTop = editorContainerRef.current
+      ? Math.abs(
+          editorContainerRef.current.getBoundingClientRect().top -
+            bottom -
+            offset
+        )
+      : bottom;
     return (
       <>
         <style jsx>
@@ -139,13 +146,13 @@ function InputEditor({
               justify-content: space-between;
               align-items: center;
               padding: 12px 16px;
-              background: #F9FAFC;
+              background: #f9fafc;
               border-radius: 8px;
               box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.06);
-              border: 1px solid #E2E5E9;
+              border: 1px solid #e2e5e9;
             }
             .hint-text {
-              color: #535B62;
+              color: #535b62;
               font-size: 13px;
             }
           `}
@@ -157,9 +164,7 @@ function InputEditor({
             }
           `}
         </style>
-        <div
-          className="suggestion-list-container-hint"
-        >
+        <div className="suggestion-list-container-hint">
           <div className="suggestion-hint-header">
             <span className="hint-text">
               Type 3 or more characters to search for super heros
@@ -171,7 +176,7 @@ function InputEditor({
         </div>
       </>
     );
-  }
+  };
 
   return (
     <SuperheroEditor
@@ -187,9 +192,9 @@ function InputEditor({
       onFocusCb={onFocusCb}
       addMentionCb={addMentionCb}
     />
-  )
+  );
 }
 
-export default React.forwardRef((props, ref) => <InputEditor
-  editorContainerRef={ref} {...props}
-/>);
+export default React.forwardRef((props, ref) => (
+  <InputEditor editorContainerRef={ref} {...props} />
+));

@@ -1,12 +1,10 @@
-import React from 'react';
-import {
-  convertToRaw,
-} from 'draft-js';
+import React from "react";
+import { convertToRaw } from "draft-js";
 
-import Modal from '../modal';
-import Editor from '../editor';
-import LinkPreview from '../linkpreview';
-import { dataParser } from '../../utils';
+import Modal from "../modal";
+import Editor from "../editor";
+import LinkPreview from "../linkpreview";
+import { dataParser } from "../../utils";
 
 function InputBox() {
   const [showEditor, toggleEditor] = React.useState(false);
@@ -16,11 +14,11 @@ function InputBox() {
   const [maxHeight, setMaxHeight] = React.useState(220);
   const [mentionData, setMentionData] = React.useState({});
   const editorContainerRef = React.useRef();
-  const trigger = '@';
+  const trigger = "@";
 
   const addTriggerAfterCb = () => {
     toggleTrigger(false);
-  }
+  };
 
   const handleSubmit = () => {
     const postData = dataParser(
@@ -30,10 +28,10 @@ function InputBox() {
       trigger
     );
     console.log(postData);
-  }
+  };
 
   const handleResize = () => {
-    if(typeof window !== 'undefined') {
+    if (typeof window !== "undefined") {
       const innerHeight = Math.abs(window.innerHeight - 122 - 280);
       setMaxHeight(innerHeight);
     }
@@ -42,36 +40,31 @@ function InputBox() {
   const updatePreviewList = (type, data) => {
     let newPreviewList = previewList;
     switch (type) {
-      case 'add':
+      case "add":
         newPreviewList.set(data.offsetKey, {
           url: data.url,
           showPreview: true,
-          idTs: Number(`${Date.now()}${newPreviewList.size}`),
+          idTs: Number(`${Date.now()}${newPreviewList.size}`)
         });
-        setPreviewList(
-          new Map(newPreviewList)
-        );
-          break;
-        case 'delete':
-          newPreviewList.delete(data.offsetKey);
-          setPreviewList(
-            new Map(newPreviewList)
-          );
-          break;
-        case 'toggleShow':
-          const currState = newPreviewList.get(data.offsetKey);
-          newPreviewList.set(data.offsetKey, {
-            url: currState.url,
-            showPreview: !currState.showPreview,
-            idTs: currState.idTs
-          });
-          setPreviewList(
-            new Map(newPreviewList)
-          );
-          break;
-        default: break;
+        setPreviewList(new Map(newPreviewList));
+        break;
+      case "delete":
+        newPreviewList.delete(data.offsetKey);
+        setPreviewList(new Map(newPreviewList));
+        break;
+      case "toggleShow":
+        const currState = newPreviewList.get(data.offsetKey);
+        newPreviewList.set(data.offsetKey, {
+          url: currState.url,
+          showPreview: !currState.showPreview,
+          idTs: currState.idTs
+        });
+        setPreviewList(new Map(newPreviewList));
+        break;
+      default:
+        break;
     }
-  }
+  };
 
   const addMentionCb = (data) => {
     const oldMentions = mentionData || {};
@@ -80,18 +73,18 @@ function InputBox() {
         ...oldMentions,
         [data.name]: {
           ...data,
-          idTs: Date.now(),
+          idTs: Date.now()
         }
-      }
+      };
       setMentionData(newMentionData);
     }
-  }
+  };
 
   return (
     <>
       <style jsx>
         {`
-          .input-container-intro{
+          .input-container-intro {
             cursor: pointer;
           }
           .input-wrapper {
@@ -99,12 +92,12 @@ function InputBox() {
             min-height: 346px;
             max-height: 577px;
             position: relative;
-            border-radius: 4px;
-            background: #FFFFFF;
+            border-radius: 6px;
+            background: #ffffff;
           }
           .header {
             width: 100%;
-            border-bottom: 1px solid #E2E5E9;
+            border-bottom: 1px solid #e2e5e9;
             padding: 16px 24px;
             display: flex;
             align-items: center;
@@ -123,7 +116,7 @@ function InputBox() {
             min-height: 221px;
             max-height: 452px;
             padding: 14px 24px;
-            color: #2F363F;
+            color: #2f363f;
           }
           .input-container :global(.public-DraftEditor-content) {
             height: 100%;
@@ -131,7 +124,7 @@ function InputBox() {
             overflow-y: auto;
           }
           .footer {
-            background: #F1F4F8;
+            background: #f1f4f8;
             display: flex;
             align-items: center;
             justify-content: space-between;
@@ -142,9 +135,9 @@ function InputBox() {
           }
           .btn {
             padding: 8px 16px;
-            background: #FFFFFF;
+            background: #ffffff;
             height: 36px;
-            border: 1px solid #D1D5DB;
+            border: 1px solid #d1d5db;
             margin-right: 16px;
           }
           .btn-container {
@@ -152,8 +145,8 @@ function InputBox() {
             align-items: center;
           }
           .btn-black {
-            background: #151E28;
-            color: #FFFFFF;
+            background: #151e28;
+            color: #ffffff;
             margin-right: 0px;
           }
           .trigger-indicator {
@@ -183,10 +176,10 @@ function InputBox() {
               overflow-y: auto;
             }
             .footer {
-              background: #FFFFFF;
+              background: #ffffff;
               padding: 16px;
               border-radius: unset;
-              border-top: 1px solid #E2E5E9;
+              border-top: 1px solid #e2e5e9;
               z-index: 10001;
             }
             .user-info-box {
@@ -195,7 +188,7 @@ function InputBox() {
               align-items: center;
             }
             .trigger-indicator {
-              color: #2F363F;
+              color: #2f363f;
               font-size: 14px;
               display: block;
             }
@@ -270,9 +263,7 @@ function InputBox() {
                 >
                   {trigger}
                 </div>
-                <div className="btn rectangle pointer">
-                  Add Image
-                </div>
+                <div className="btn rectangle pointer">Add Image</div>
               </div>
               <div
                 className="btn btn-black rectangle pointer desktop--only"
@@ -297,7 +288,7 @@ function InputBox() {
         </Modal>
       )}
     </>
-  )
+  );
 }
 
 export default InputBox;

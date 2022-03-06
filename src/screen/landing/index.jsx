@@ -8,7 +8,7 @@ function Landing() {
       {`
         .outer-box {
           width: 100%;
-          max-width: 1134px;
+          max-width: 1280px;
           height: 100%;
           position: relative;
           margin: 0 auto;
@@ -21,12 +21,12 @@ function Landing() {
         }
         .left-panel {
           display: flex;
-          width: 40%;
-          height: 100%;
+          width: 30%;
           position: relative;
+          max-width: 336px;
         }
         .right-panel {
-          width: 60%;
+          width: 70%;
           height: 100%;
           padding: 12px;
           position: relative;
@@ -41,9 +41,9 @@ function Landing() {
             height: unset;
             width: 100%;
             flex-direction: column;
+            display: none;
           }
           .right-panel {
-            height: unset;
             width: 100%;
             padding-left: 12px;
           }
