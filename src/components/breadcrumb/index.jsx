@@ -12,7 +12,7 @@ function Breadcrumb() {
           }
         `}
       </style>
-      <div className="breadcrumb">Scrap Book</div>
+      <div className="breadcrumb">ScrapböOk</div>
     </>
   );
 }

@@ -1,5 +1,5 @@
-import Profile from "../profile";
-import Breadcrumb from "../breadcrumb";
+import Profile from "../../../../components/profile";
+import Breadcrumb from "../../../../components/breadcrumb";
 
 function IntroPanel() {
   return (
