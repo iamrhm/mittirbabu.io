@@ -1,27 +1,28 @@
-function Socials({ socialList }) {
+import profileData from '../../__mocks__/profile.data';
+
+function Socials({ socialList = profileData.socials }) {
   return (
     <>
       <style jsx>
         {`
           .socials {
             display: flex;
-            padding: 24px 8px 8px 8px;
           }
           .social-icon {
             width: 28px;
             height: 28px;
-            margin-right: 12px;
-            border: 1px solid #535b62;
-            border-radius: 4px;
+            margin-right: 24px;
+            border: 1px solid #fff;
+            border-radius: 50%;
             display: flex;
             justify-content: center;
             align-items: center;
-            font-size: 16px;
-            color: #535b62;
+            font-size: 14px;
+            color: #fff;
             text-decoration: none;
             cursor: pointer;
           }
-          .social-icon :last-of-type {
+          .social-box:last-child :global(.social-icon) {
             margin-right: 0px;
           }
         `}

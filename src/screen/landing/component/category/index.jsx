@@ -26,8 +26,8 @@ const Category = () => {
         `}
       </style>
       <div className="category-container">
-        {[1, 2, 3, 4, 5, 6, 7, 8].map((data) => (
-          <div className="category-card loader"></div>
+        {[1, 2, 3, 4, 5, 6, 7, 8].map((data, idx) => (
+          <div className="category-card loader" key={idx}></div>
         ))}
       </div>
     </>

@@ -1,96 +1,78 @@
 import React from "react";
 
-import IntroPanel from "./component/intro";
-import LandingContent from "./component/content";
+import LandingContent from "./component/intro";
 import Category from "./component/category";
 import Header from "./component/header";
+import Footer from "./component/footer";
+
 
 function Landing() {
-  const topBannerRef = React.useRef(null);
-  const startScrolling = () => {
-    if (topBannerRef.current) {
+  const innerBoxRef = React.useRef(null);
+  const landingRef = React.useRef(null);
+  const [showTitle, toggleHeader] = React.useState(false);
+
+  const navigateToBook = () => {
+    if (innerBoxRef.current && landingRef.current) {
       const containerBottom =
-        topBannerRef.current.getBoundingClientRect().bottom;
-      topBannerRef.current.scroll({
+        landingRef.current.getBoundingClientRect().bottom;
+      innerBoxRef.current.scroll({
         top: containerBottom,
         left: 0,
         behavior: "smooth"
       });
     }
   };
+
   return (
     <>
       <style jsx>
         {`
           .outer-box {
             width: 100%;
-            max-width: 1280px;
             height: 100%;
             position: relative;
-            margin: 0 auto;
+            background: #121212;
           }
           .inner-box {
             width: 100%;
             height: 100%;
             position: relative;
             display: flex;
+            flex-direction: column;
+            align-items: center;
+            overflow-y: auto;
           }
-          .left-panel {
-            display: flex;
-            width: 30%;
-            position: relative;
-            max-width: 336px;
-          }
-          .right-panel {
-            width: 70%;
-            height: 100%;
-            padding: 12px;
-            position: relative;
-            padding-left: 0px;
-          }
-          .content-container {
+          .landing-container {
             display: flex;
             flex-direction: column;
             width: 100%;
             height: 100%;
-            overflow-y: auto;
-            border-radius: 6px;
-            background: #fff;
-            overflow-y: auto;
-            border: 1px solid #d1d5db;
+            position: relative;
+            min-height: calc(100vh - 98px);
           }
-          @media (max-width: 981px) {
-            .content-container {
-              border: none;
-            }
+          .category-container {
+            max-width: 1280px;
+            margin: 0 auto;
+          }
+          @media (min-width: 981px) {
             .inner-box {
-              flex-direction: column;
-              overflow: auto;
-            }
-            .left-panel {
-              height: unset;
-              width: 100%;
-              flex-direction: column;
-              display: none;
-            }
-            .right-panel {
-              width: 100%;
-              padding: unset;
+
             }
           }
         `}
       </style>
       <div className="outer-box">
-        <div className="inner-box">
-          <div className="left-panel">
-            <IntroPanel />
+        <Header showTitle={showTitle}/>
+        <div className="inner-box" ref={innerBoxRef}>
+          <div className="landing-container" ref={landingRef}>
+            <LandingContent
+              navigateToBook={navigateToBook}
+              toggleHeader={toggleHeader}
+            />
+            <Footer />
           </div>
-          <div className="right-panel">
-            <div className="content-container" ref={topBannerRef}>
-              <Header />
-              <LandingContent navigateToBook={startScrolling} />
-              <Category />
-            </div>
+          <div className="category-container">
+            <Category />
           </div>
         </div>
       </div>
