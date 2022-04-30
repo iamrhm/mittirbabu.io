@@ -24,7 +24,7 @@ function Intro({ navigateToBook, toggleHeader }) {
           .intro {
             top: 50%;
             left: 50%;
-            transform: translate(0%, 50%);
+            transform: translate(0%, 40%);
           }
           .banner {
             width: 100%;

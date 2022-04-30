@@ -1,4 +1,5 @@
 import React from "react";
+import { FiExternalLink } from 'react-icons/fi';
 
 import category from "../../../../__mocks__/category.data";
 
@@ -14,14 +15,21 @@ const Category = () => {
             display: flex;
             flex-direction: column;
             align-items: center;
-            height: 100%;
+            min-height: 100vh;
             padding: 0 24px;
+          }
+          .title-text {
+            width: 100%;
+            color: #fff;
+            max-width: 1120px;
+            margin: auto;
+            padding: 32px 24px;
           }
           .category-card {
             border-radius: 8px;
             height: 380px;
             width: 80%;
-            max-width: 300px;
+            max-width: 280px;
             margin-top: 30px;
             display: flex;
             flex-direction: column;
@@ -41,9 +49,10 @@ const Category = () => {
             padding-top: 50%;
           }
           .category-sub-title {
-            font-size: 16px;
-            font-weight: 600;
+            font-size: 24px;
+            font-weight: bolder;
             padding: 0;
+            opacity: 0.7;
           }
           .category-drop-shadow {
             width: 100%;
@@ -78,11 +87,20 @@ const Category = () => {
             position: absolute;
             border-radius: 7px;
           }
+          .dummy-padding {
+            width: 100%;
+            height: 240px;
+          }
           @media (min-width: 991px) {
             .category-container {
               flex-direction: row;
               overflow-x: auto;
               padding: unset;
+              align-items: flex-start;
+              padding-top: 60px;
+            }
+            .title-text {
+              padding: 32px 0;
             }
             .category-card {
               width: calc(25% - 22.5px);
@@ -101,21 +119,27 @@ const Category = () => {
           }
         `}
       </style>
-      <div className="category-container">
-        {category.map((data) => (
-          <div
-            className="category-card loader"
-            key={data.key}
-          >
-            <div className="category-name">{data.label}</div>
-            <div className="category-sub-title">
-              Explore {data.label} stories
+      <>
+        <h2 className="title-text">
+          Pick your Book
+        </h2>
+        <div className="category-container">
+          {category.map((data) => (
+            <div
+              className="category-card"
+              key={data.key}
+            >
+              <div className="category-name">{data.label}</div>
+              <div className="category-sub-title">
+                <FiExternalLink />
+              </div>
+              <img src={data.image} className="category-background-img" />
+              <div className="category-drop-shadow" />
             </div>
-            <img src={data.image} className="category-background-img" />
-            <div className="category-drop-shadow" />
-          </div>
-        ))}
-      </div>
+          ))}
+        </div>
+        <div className="dummy-padding" />
+      </>
     </>
   );
 };

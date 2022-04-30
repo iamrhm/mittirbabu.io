@@ -16,7 +16,7 @@ function Landing() {
       const containerBottom =
         landingRef.current.getBoundingClientRect().bottom;
       innerBoxRef.current.scroll({
-        top: containerBottom,
+        top: containerBottom - 96,
         left: 0,
         behavior: "smooth"
       });
@@ -32,6 +32,7 @@ function Landing() {
             height: 100%;
             position: relative;
             background: #121212;
+            overflow: hidden;
           }
           .inner-box {
             width: 100%;

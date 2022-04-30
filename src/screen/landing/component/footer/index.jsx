@@ -45,6 +45,7 @@ const footer = () => {
           @media (min-width: 981px) {
             .footer-wrapper {
               bottom: 0;
+              padding: 24px 0px;
             }
           }
           @keyframes location-rotate {

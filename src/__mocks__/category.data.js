@@ -1,13 +1,13 @@
 const category = [
   {
-    label: 'Travel',
-    key: 'travel',
-    image: '/images/category/travel.JPG',
-  },
-  {
     label: 'Work',
     key: 'work',
     image: '/images/category/work.JPG',
+  },
+  {
+    label: 'Travel',
+    key: 'travel',
+    image: '/images/category/travel.JPG',
   },
   {
     label: 'Art',
