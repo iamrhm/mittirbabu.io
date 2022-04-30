@@ -53,7 +53,7 @@ function Intro({ navigateToBook, toggleHeader }) {
           .compass {
             position: relative;
             display: block;
-            color: #000;
+            color: transparent;
             animation: compass-rotate 2.5s ease-in-out;
           }
           .compass:hover {
@@ -66,7 +66,7 @@ function Intro({ navigateToBook, toggleHeader }) {
             left: 50%;
             object-fit: contain;
             transform: translate(-50%, -50%) rotate(0deg);
-            width: 68px;
+            width: 80px;
           }
           .subtitle-container {
             width: 100%;
@@ -106,20 +106,28 @@ function Intro({ navigateToBook, toggleHeader }) {
             border-radius: 25px;
             cursor: pointer;
           }
+          @media (min-width: 760px) {
+            .compass-image {
+              width: 124px;
+            }
+            .title-text {
+              font-size: calc(9vw - 20%);
+            }
+          }
           @media (min-width: 981px) {
             .intro {
               top: 50%;
               left: 50%;
               transform: translate(0%, 20%);
             }
+            .title-text {
+              font-size: calc(9vw - 20%);
+            }
             .compass-image {
-              width: 200px;
+              width: 218px;
             }
             .subtitle-text {
               width: 70%;
-            }
-            .title-text {
-              font-size: 124px
             }
             .description-text {
               width: 60%;
@@ -151,7 +159,7 @@ function Intro({ navigateToBook, toggleHeader }) {
         <div className="subtitle-container">
             <span className="description-text">
               Every images are an idea in frame. <br />
-              Explore different ideas and stories, curated by <br />iamrhm
+              Explore different ideas and stories captured by <br />iamrhm
             </span>
             <div className="explore-btn-container">
               <btn className="explore-btn" onClick={navigateToBook}>

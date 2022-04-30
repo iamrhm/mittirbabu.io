@@ -25,7 +25,7 @@ const Header = ({ showTitle }) => {
             align-items: center;
             justify-content: space-between;
             width: 100%;
-            max-width: 1280px;
+            max-width: 1120px;
             margin: 0 auto;
           }
           .scrapbook-banner {
@@ -75,7 +75,7 @@ const Header = ({ showTitle }) => {
           }
           .compass {
             position: relative;
-            width: 38px;
+            width: 32px;
             display: inline-block;
             color: #000;
             animation: compass-rotate 2.5s ease-in-out;
@@ -90,7 +90,7 @@ const Header = ({ showTitle }) => {
             left: 50%;
             object-fit: contain;
             transform: translate(-50%, -50%) rotate(0deg);
-            width: 24px;
+            width: 42px;
           }
           @media (min-width: 981px) {
             .title-text {
