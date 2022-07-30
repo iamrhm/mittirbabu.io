@@ -10,6 +10,7 @@ function Landing() {
   const innerBoxRef = React.useRef(null);
   const categoryRef = React.useRef(null);
   const [showTitle, toggleHeader] = React.useState(false);
+  const isFirstRender = React.useRef(true);
 
   const navigateToBook = () => {
     if (innerBoxRef.current && categoryRef.current) {
@@ -22,6 +23,10 @@ function Landing() {
       });
     }
   };
+
+  React.useEffect(() => {
+    isFirstRender.current = false;
+  }, []);
 
   return (
     <>
@@ -42,6 +47,7 @@ function Landing() {
             flex-direction: column;
             align-items: center;
             overflow-y: auto;
+            padding: 0 16px;
           }
           .landing-container {
             display: flex;
@@ -52,14 +58,17 @@ function Landing() {
             min-height: calc(100vh - 98px);
           }
           .category-container {
-            max-width: 1280px;
-            margin: 0 auto;
+            max-width: 1120px;
+            margin: auto;
             width: 100%;
           }
           @media (min-width: 981px) {
             .landing-container {
               max-width: 1120px;
               margin: auto;
+            }
+            .inner-box {
+              padding: 0 24px;
             }
           }
         `}
@@ -70,7 +79,7 @@ function Landing() {
           <section className="landing-container">
             <LandingContent
               navigateToBook={navigateToBook}
-              toggleHeader={toggleHeader}
+              toggleHeader={(headerState) => toggleHeader(headerState && !isFirstRender.current)}
             />
             <Footer />
           </section>

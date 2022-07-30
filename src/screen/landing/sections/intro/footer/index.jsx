@@ -1,13 +1,13 @@
 import React from "react";
 import Socials from "../../../../../components/socials";
 
-const footer = () => {
+const Footer = () => {
   return (
     <>
       <style jsx>
         {`
           .footer-wrapper {
-            padding: 24px 26px;
+            padding: 24px 0px;
             position: absolute;
             bottom: 86px;
             width: 100%;
@@ -45,7 +45,7 @@ const footer = () => {
           @media (min-width: 981px) {
             .footer-wrapper {
               bottom: 0;
-              padding: 24px;
+              padding: 24px 0;
             }
           }
           @keyframes location-rotate {
@@ -91,4 +91,4 @@ const footer = () => {
   );
 };
 
-export default footer;
+export default Footer;

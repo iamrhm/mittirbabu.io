@@ -6,7 +6,7 @@ export default function MyApp({ Component, pageProps }) {
   return (
     <>
       <Head>
-        <title>Scrap Template</title>
+        <title>mittirbabu</title>
       </Head>
       <Component {...pageProps} />
     </>

@@ -39,7 +39,6 @@ function Intro({ navigateToBook, toggleHeader }) {
           .title-text {
             width: 100%;
             font-size: 48px;
-            height: 30%;
             font-weight: 800;
             color: #fff;
             text-align: center;
@@ -54,21 +53,20 @@ function Intro({ navigateToBook, toggleHeader }) {
             display: block;
           }
           .compass {
-            width: 80px;
+            width: 40px;
             position: absolute;
-            top: 50%;
+            top: 0%;
             left: 50%;
-            transform: translate(-50%, -80%);
+            transform: translate(-50%, -12%);
           }
           .compass-image {
             filter: drop-shadow(4px 6px 16px #2B2019);
-            width: 80px;
+            width: 40px;
             object-fit: contain;
             animation: compass-rotate 2.5s ease-in-out forwards;
           }
           .subtitle-container {
             width: 100%;
-            height: 70%;
             padding: 24px;
             padding-top: 0;
             text-align: center;
@@ -79,7 +77,8 @@ function Intro({ navigateToBook, toggleHeader }) {
             display: inline-block;
             font-size: 14px;
             padding: 24px 0px;
-            width: 90%;
+            padding-bottom: 48px;
+            width: 100%;
             font-style: italic;
             color: rgba(255, 255, 255, 0.7);
           }
@@ -89,26 +88,25 @@ function Intro({ navigateToBook, toggleHeader }) {
             justify-content: center;
             align-items: flex-start;
             z-index: 1;
-            margin-top: 24px;
           }
           .explore-btn {
-            height: 50px;
+            min-height: 50px;
             color: #000;
             display: inline-block;
-            padding: 13px 30px 13px 30px;
+            padding: 14px 30px 14px 30px;
             position: relative;
-            font-size: 14px;
-            line-height: 24px;
+            font-size: 18px;
             text-decoration: none;
             background: #fff;
-            border-radius: 25px;
+            border-radius: 8px;
             cursor: pointer;
+            font-weight: bold;
           }
           @media (min-width: 981px) {
             .intro {
               top: 50%;
               left: 50%;
-              transform: translate(0%, 20%);
+              transform: translate(0%, 40%);
             }
             .title-text {
               font-size: 138px;
@@ -116,9 +114,9 @@ function Intro({ navigateToBook, toggleHeader }) {
             .compass {
               width: 116px;
               height: 128px;
-              top: 50%;
+              top: 0%;
               left: 50%;
-              transform: translate(-50%, -100%);
+              transform: translate(-50%, -20%);
             }
             .compass-image {
               width: 116px;
@@ -161,8 +159,8 @@ function Intro({ navigateToBook, toggleHeader }) {
         </div>
         <div className="subtitle-container">
             <div className="description-text">
-              Every images are an idea in frame. <br />
-              Explore different ideas and stories captured by <br />iamrhm
+              A digital workspace thoughtfully curated by Rahul <br />
+              Explore different ideas and stories
             </div>
             <div className="explore-btn-container">
               <btn className="explore-btn" onClick={navigateToBook}>

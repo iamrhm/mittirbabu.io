@@ -1,17 +1,36 @@
 import React from 'react';
+
 import userData from '../../../../__mocks__/profile.data';
+import useIntersectionObserver from '../../../../hooks/useIntersectionObserver';
+
+const option = {
+  root: null,
+  rootMargin: "0px",
+  threshold: 0.5
+};
 
 const UserSection = () => {
+  const [cardRef,  crossedThreshold] = useIntersectionObserver({
+    option,
+  });
+
+  React.useEffect(() => {
+    if (!cardRef.current) return;
+    if (crossedThreshold) {
+      cardRef.current.classList.add('slide-in');
+    }
+  }, [crossedThreshold]);
+
   return (
     <>
       <style jsx>
       {`
         .user-section {
-          max-width: 1280px;
+          max-width: 1120px;
           margin: 0 auto;
           width: 100%;
-          min-height: 100vh;
           position: relative;
+          padding: 84px 0;
         }
         .user-details {
           display: flex;
@@ -23,32 +42,18 @@ const UserSection = () => {
         .user-image-container {
           width: 100%;
           position: relative;
+          display: flex;
+          justify-content: center;
+          padding-top: 18px;
         }
         .user-image {
-          width: 90%;
+          border-radius: 8px;
+          height: 320px;
+          opacity: 0;
+          transform: translate(0, 40px);
         }
-        .top-drop-shadow {
-          width: 100%;
-          top: -1px;
-          left: 0px;
-          height: 100%;
-          position: absolute;
-          background: linear-gradient(
-            to bottom,
-            rgba(18,18,18, 0.538) 0%,
-            rgba(18,18,18, 0.438) 19%,
-            rgba(18,18,18, 0.341) 34%,
-            rgba(18,18,18, 0.282) 47%,
-            rgba(18,18,18, 0.194) 56.5%,
-            rgba(18,18,18, 0.154) 65%,
-            rgba(18,18,18, 0.006) 73%,
-            rgba(18,18,18, 0.001) 80.2%,
-            transparent 86.1%,
-            transparent 91%,
-            transparent 95.2%,
-            transparent 98.2%,
-            transparent 100%
-          );
+        .user-image.slide-in {
+          animation: slide-in 1s cubic-bezier(0.87, 0, 0.13, 1) forwards;
         }
         .user-info {
           color: #fff;
@@ -60,43 +65,72 @@ const UserSection = () => {
           font-weight: bolder;
         }
         .user-detail {
-          font-size: 24px;
+          font-size: 20px;
           padding: 14px 0;
+          color: rgba(255, 255, 255, 0.7);
         }
         .user-bio {
-          font-size: 16px;
+          font-size: 14px;
+          color: rgba(255, 255, 255, 0.7);
+        }
+        .user-email {
+          padding: 18px 0;
+          font-size: 18px;
+        }
+        .dummy-padding {
+          width: 100%;
+          height: 64px;
         }
         @media (min-width: 992px) {
+          .user-section {
+            padding: 128px 0;
+            padding-bottom: 64px;
+          }
           .user-details {
             flex-direction: row;
+            align-items: center;
           }
           .user-info-container {
             width: 60%;
-            padding-top: 10%;
           }
           .user-info {
             width: 80%;
           }
           .user-image-container {
             width: 40%;
+            justify-content: flex-end;
+            padding: unset;
+            height: 420px;
+          }
+          .user-image {
+            height: 420px;
           }
           .user-name {
             font-size: 48px;
             font-weight: 900;
           }
           .user-detail {
-            font-size: 24px;
             padding: 14px 0;
-            color: rgba(255, 255, 255, 0.7);
           }
           .user-bio {
-            font-size: 18px;
-            color: rgba(255, 255, 255, 0.7);
             font-style: italic;
           }
           .user-email {
             padding: 31px 0;
             font-size: 24px;
+          }
+          .dummy-padding {
+            height: 128px;
+          }
+        }
+        @keyframes slide-in {
+          from {
+            transform: translate(0, 40px);
+            opacity: 0;
+          }
+          to {
+            transform: translate(0, 0px);
+            opacity: 1;
           }
         }
       `}
@@ -120,10 +154,10 @@ const UserSection = () => {
             </div>
           </div>
           <div className="user-image-container">
-            <img className="user-image" src={userData.image} />
-            <div className="top-drop-shadow" />
+            <img className="user-image" src={userData.image} ref={cardRef} />
           </div>
         </div>
+        <div className="dummy-padding" />
       </section>
     </>
   )
