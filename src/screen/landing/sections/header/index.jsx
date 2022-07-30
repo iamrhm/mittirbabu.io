@@ -3,8 +3,7 @@ import { FiMail, FiMenu } from "react-icons/fi";
 
 const Header = ({ showTitle }) => {
   const [showMenu, toggleMenu] = React.useState(false);
-  const isFirstRender = React.useRef(false);
-  
+
   const handleMenuClick = (e) => {
     toggleMenu(!showMenu);
   }
@@ -80,9 +79,9 @@ const Header = ({ showTitle }) => {
           .compass-header {
             position: absolute;
             width: 32px;
-            top: 50%;
+            top: 10%;
             left: 50%;
-            transform: translate(-50%, -80%);
+            transform: translate(-50%, -50%);
           }
           .compass-header-image {
             width: 32px;
@@ -103,11 +102,9 @@ const Header = ({ showTitle }) => {
               font-size: 24px;
             }
             .compass-header {
-              position: relative;
-              width: 32px;
+              top: 20%;
             }
             .compass-header-image {
-              width: 48px;
             }
           }
         `}

@@ -4,7 +4,7 @@ export default {
   name: "Rahul Mitra",
   intro:
     "Lorem ipsum dolor sit amet, consectetur adip lorem Lorem ipsum dolor sit amet, consectetur adip lorem",
-  image: "/images/userImage/profile.jpeg",
+  image: "/images/userImage/profile.jpg",
   location: "Bangalore, India",
   work: "Software Engineer",
   socials: [

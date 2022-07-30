@@ -1,21 +1,21 @@
 const category = [
   {
-    label: 'Work',
+    label: 'dev/science',
     key: 'work',
     image: '/images/category/work.JPG',
   },
   {
-    label: 'Travel',
+    label: 'travel',
     key: 'travel',
     image: '/images/category/travel.JPG',
   },
   {
-    label: 'Art',
+    label: 'art',
     key: 'art',
     image: '/images/category/art.JPG',
   },
   {
-    label: 'Abstract',
+    label: 'abstract',
     key: 'Abstract',
     image: '/images/category/abstract.jpg',
   },
