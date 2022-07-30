@@ -1,0 +1,3 @@
+[submodule "superheroeditor"]
+	path = superheroeditor
+	url = https://github.com/iamrhm/superheroeditor.git

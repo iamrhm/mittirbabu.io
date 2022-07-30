@@ -43,8 +43,8 @@ function Menu() {
       `}
       </style>
       <div className="menu-box">
-        {[1,2,3,4].map((data) => (
-          <div className="option-box">
+        {[1,2,3,4].map((data, index) => (
+          <div className="option-box" key={index}>
             <div className="option-icon round loader">
             </div>
             <div className="option-details">
