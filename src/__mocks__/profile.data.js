@@ -4,12 +4,13 @@ export default {
   name: "Rahul Mitra",
   intro:
     "Lorem ipsum dolor sit amet, consectetur adip lorem Lorem ipsum dolor sit amet, consectetur adip lorem",
-  image: "/images/userData/profile.jpeg",
+  image: "/images/userImage/profile.jpeg",
   location: "Bangalore, India",
-  work: "Software Engineer 🧑🏻‍💻",
+  work: "Software Engineer",
   socials: [
     { key: "twitter", icon: FiTwitter, link: "" },
     { key: "instagram", icon: FiInstagram, link: "" },
     { key: "linkedIn", icon: FiLinkedin, link: "" }
-  ]
+  ],
+  email: 'rahulmitra980@gmail.com'
 };

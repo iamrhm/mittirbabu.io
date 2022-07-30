@@ -1,20 +1,20 @@
 import React from "react";
 
-import LandingContent from "./component/intro";
-import Category from "./component/category";
-import Header from "./component/header";
-import Footer from "./component/footer";
-
+import LandingContent from "./sections/intro";
+import Category from "./sections/category";
+import Header from "./sections/header";
+import Footer from "./sections/intro/footer";
+import UserSection from './sections/user';
 
 function Landing() {
   const innerBoxRef = React.useRef(null);
-  const landingRef = React.useRef(null);
+  const categoryRef = React.useRef(null);
   const [showTitle, toggleHeader] = React.useState(false);
 
   const navigateToBook = () => {
-    if (innerBoxRef.current && landingRef.current) {
+    if (innerBoxRef.current && categoryRef.current) {
       const containerBottom =
-        landingRef.current.getBoundingClientRect().bottom;
+        categoryRef.current.getBoundingClientRect().top;
       innerBoxRef.current.scroll({
         top: containerBottom - 96,
         left: 0,
@@ -55,7 +55,6 @@ function Landing() {
             max-width: 1280px;
             margin: 0 auto;
             width: 100%;
-            min-height: 100vh;
           }
           @media (min-width: 981px) {
             .landing-container {
@@ -68,16 +67,17 @@ function Landing() {
       <div className="outer-box">
         <Header showTitle={showTitle}/>
         <div className="inner-box" ref={innerBoxRef}>
-          <div className="landing-container" ref={landingRef}>
+          <section className="landing-container">
             <LandingContent
               navigateToBook={navigateToBook}
               toggleHeader={toggleHeader}
             />
             <Footer />
-          </div>
-          <div className="category-container">
+          </section>
+          <section className="category-container" ref={categoryRef}>
             <Category />
-          </div>
+          </section>
+          <UserSection />
         </div>
       </div>
     </>

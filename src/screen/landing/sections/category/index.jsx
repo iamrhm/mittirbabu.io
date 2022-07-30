@@ -15,7 +15,6 @@ const Category = () => {
             display: flex;
             flex-direction: column;
             align-items: center;
-            min-height: 100vh;
             padding: 0 24px;
           }
           .title-text {
@@ -89,7 +88,7 @@ const Category = () => {
           }
           .dummy-padding {
             width: 100%;
-            height: 240px;
+            height: 64px;
           }
           @media (min-width: 991px) {
             .category-container {

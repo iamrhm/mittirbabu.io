@@ -3,7 +3,8 @@ import { FiMail, FiMenu } from "react-icons/fi";
 
 const Header = ({ showTitle }) => {
   const [showMenu, toggleMenu] = React.useState(false);
-
+  const isFirstRender = React.useRef(false);
+  
   const handleMenuClick = (e) => {
     toggleMenu(!showMenu);
   }
@@ -73,44 +74,41 @@ const Header = ({ showTitle }) => {
             border: unset !important;
             color: #fff;
           }
-          .compass {
+          .compass-header-letter {
             position: relative;
-            width: 32px;
-            display: inline-block;
-            color: #000;
-            animation: compass-rotate 2.5s ease-in-out;
           }
-          .compass:hover {
-            animation: compass-rotate 2.5s infinite ease-in-out;
-          }
-          .compass-image {
-            filter: drop-shadow(4px 6px 16px #2B2019);
+          .compass-header {
             position: absolute;
+            width: 32px;
             top: 50%;
             left: 50%;
+            transform: translate(-50%, -80%);
+          }
+          .compass-header-image {
+            width: 32px;
+            filter: drop-shadow(4px 6px 16px #2B2019);
             object-fit: contain;
-            transform: translate(-50%, -50%) rotate(0deg);
-            width: 42px;
+            animation: compass-header-rotate 2.5s ease-in-out forwards;
+          }
+          @keyframes compass-header-rotate {
+            0%   {transform: rotate(-18deg);}
+            10%  {transform: rotate(12deg);}
+            40%  {transform: rotate(-25deg);}
+            60%  {transform: rotate(20deg);}
+            80%  {transform: rotate(0deg);}
+            100% {transform: rotate(-18deg);}
           }
           @media (min-width: 981px) {
             .title-text {
               font-size: 24px;
             }
-            .compass {
+            .compass-header {
               position: relative;
               width: 32px;
             }
-            .compass-image {
+            .compass-header-image {
               width: 48px;
             }
-          }
-          @keyframes compass-rotate {
-            0%   {transform:rotate(0deg);}
-            10%  {transform:rotate(12deg);}
-            40%  {transform:rotate(-25deg);}
-            60%  {transform:rotate(20deg);}
-            80%  {transform:rotate(-15deg);}
-            100% {transform:rotate(0deg);}
           }
         `}
       </style>
@@ -128,12 +126,14 @@ const Header = ({ showTitle }) => {
         <div className="header-container">
           <div className="scrapbook-banner">
             <h1 className="title-text">
-              Scrapbo
-              <span className="compass">
-                o
-                <img src="/images/banner/compass2.png" className="compass-image" />
+              m
+              <span className="compass-header-letter">
+                i
+              <span className="compass-header">
+                <img src="/images/banner/compass2.png" className="compass-header-image" />
               </span>
-              k
+              </span>
+              ttirbabu
             </h1>
           </div>
           <div className="icon-holder close-icon" onClick={handleMenuClick}>
