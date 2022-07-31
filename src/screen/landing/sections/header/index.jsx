@@ -1,9 +1,7 @@
 import React from "react";
 import { FiMail, FiMenu } from "react-icons/fi";
 
-const Header = ({ showTitle }) => {
-  const [showMenu, toggleMenu] = React.useState(false);
-
+const Header = ({ showTitle, toggleMenu, showMenu }) => {
   const handleMenuClick = (e) => {
     toggleMenu(!showMenu);
   }

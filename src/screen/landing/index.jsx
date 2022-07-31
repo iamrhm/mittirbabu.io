@@ -4,18 +4,19 @@ import LandingContent from "./sections/intro";
 import Category from "./sections/category";
 import Header from "./sections/header";
 import Footer from "./sections/intro/footer";
-import UserSection from './sections/user';
+import UserSection from "./sections/user";
+import MenuModal from "../../components/menu";
 
 function Landing() {
+  const [showTitle, toggleHeader] = React.useState(false);
+  const [showMenu, toggleMenu] = React.useState(false);
   const innerBoxRef = React.useRef(null);
   const categoryRef = React.useRef(null);
-  const [showTitle, toggleHeader] = React.useState(false);
   const isFirstRender = React.useRef(true);
 
   const navigateToBook = () => {
     if (innerBoxRef.current && categoryRef.current) {
-      const containerBottom =
-        categoryRef.current.getBoundingClientRect().top;
+      const containerBottom = categoryRef.current.getBoundingClientRect().top;
       innerBoxRef.current.scroll({
         top: containerBottom - 96,
         left: 0,
@@ -74,12 +75,18 @@ function Landing() {
         `}
       </style>
       <div className="outer-box">
-        <Header showTitle={showTitle}/>
+        <Header
+          showTitle={showTitle}
+          toggleMenu={toggleMenu}
+          showMenu={showMenu}
+        />
         <div className="inner-box" ref={innerBoxRef}>
           <section className="landing-container">
             <LandingContent
               navigateToBook={navigateToBook}
-              toggleHeader={(headerState) => toggleHeader(headerState && !isFirstRender.current)}
+              toggleHeader={(headerState) =>
+                toggleHeader(headerState && !isFirstRender.current)
+              }
             />
             <Footer />
           </section>
@@ -88,6 +95,7 @@ function Landing() {
           </section>
           <UserSection />
         </div>
+        <MenuModal showMenu={showMenu} toggleMenu={toggleMenu} />
       </div>
     </>
   );
