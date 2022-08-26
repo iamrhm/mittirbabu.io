@@ -53,7 +53,7 @@ function Menu({ showMenu, toggleMenu }) {
             transform: scale(1.5);
             transition: all 0.75s cubic-bezier(0.87, 0, 0.13, 1);
             opacity: 0;
-            padding-top: 120px;
+            padding-top: 64px;
           }
           .option-box.show-option-box {
             transform: scale(1);
@@ -63,7 +63,7 @@ function Menu({ showMenu, toggleMenu }) {
             display: flex;
             flex-direction: column;
             align-items: center;
-            padding: 16px;
+            padding: 24px;
             cursor: pointer;
           }
           .option-name {
@@ -83,7 +83,7 @@ function Menu({ showMenu, toggleMenu }) {
               padding-top: 24px;
             }
             .option-box {
-              padding-top: 64px;
+              padding-top: 48px;
             }
             .option-name {
               font-size: 32px;
