@@ -1,9 +1,7 @@
-import Landing from '../src/screen/landing';
+import Landing from "../src/screen/landing";
 
 function HomePage() {
-  return (
-    <Landing />
-  )
+  return <Landing />;
 }
 
-export default HomePage
+export default HomePage;

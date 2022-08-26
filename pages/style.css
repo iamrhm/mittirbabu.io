@@ -1,7 +1,8 @@
-body, #__next {
+body,
+#__next {
   margin: 0;
   padding: 0;
-  font-family: 'Nunito', sans-serif;
+  font-family: "Rubik", sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   box-sizing: border-box;
@@ -33,7 +34,7 @@ code {
 .round {
   border-radius: 50%;
 }
-.pointer{
+.pointer {
   cursor: pointer;
 }
 .book {

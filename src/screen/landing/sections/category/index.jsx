@@ -1,15 +1,16 @@
 import React from "react";
+import { useRouter } from "next/router";
 
-import CategoryCard from "../../../../components/category-card";
+import SliderCard from "../../../../components/slider-card";
 import category from "../../../../__mocks__/category.data";
 
-const option = {
-  root: null,
-  rootMargin: "0px",
-  threshold: 1
-};
-
 const Category = () => {
+  const router = useRouter();
+
+  const navigateToCategory = (categoryOptions) => {
+    router.push(categoryOptions.link);
+  };
+
   return (
     <>
       <style jsx>
@@ -21,6 +22,7 @@ const Category = () => {
             display: flex;
             flex-direction: row;
             flex-wrap: wrap;
+            padding-bottom: 24px;
           }
           .title-text {
             width: 100%;
@@ -56,10 +58,12 @@ const Category = () => {
         <h2 className="title-text">Pick your space</h2>
         <div className="category-container">
           {category.map((data, index) => (
-            <CategoryCard
+            <SliderCard
               data={data}
               key={data.key}
-              isOddChild={(index + 1) % 2}
+              isOddChild={ (index + 1) % 2 }
+              isLink
+              onClick={navigateToCategory}
             />
           ))}
         </div>

@@ -1,7 +1,7 @@
 import React from "react";
 import { FiExternalLink } from "react-icons/fi";
 
-import useIntersectionObserver from '../../hooks/useIntersectionObserver';
+import useIntersectionObserver from "../../hooks/useIntersectionObserver";
 
 const option = {
   root: null,
@@ -9,15 +9,15 @@ const option = {
   threshold: 0.5
 };
 
-const CategoryCard = ({ data, isOddChild }) => {
-  const [cardRef,  crossedThreshold] = useIntersectionObserver({
-    option,
+const SliderCard = ({ data, isOddChild, isLink, onClick }) => {
+  const [cardRef, crossedThreshold] = useIntersectionObserver({
+    option
   });
 
   React.useEffect(() => {
     if (!cardRef.current) return;
     if (crossedThreshold) {
-      cardRef.current.classList.add('slide-in');
+      cardRef.current.classList.add("slide-in");
     }
   }, [crossedThreshold]);
 
@@ -43,7 +43,7 @@ const CategoryCard = ({ data, isOddChild }) => {
           }
           .category-name,
           .category-sub-title {
-            font-size: 24px;
+            font-size: 18px;
             color: #fff;
             z-index: 1;
             font-weight: bolder;
@@ -131,7 +131,7 @@ const CategoryCard = ({ data, isOddChild }) => {
               opacity: 0;
             }
             to {
-              transform: translate(0, -60px);
+              transform: translate(0, -40px);
               opacity: 1;
             }
           }
@@ -141,11 +141,12 @@ const CategoryCard = ({ data, isOddChild }) => {
         <div
           className={`category-card ${isOddChild ? "odd" : "even"}-card`}
           ref={cardRef}
+          onClick={() => onClick(data)}
         >
-          <div className="category-name">{data.label}</div>
-          <div className="category-sub-title">
+          <div className="category-name">{ data.label }</div>
+          {isLink && (<div className="category-sub-title">
             <FiExternalLink />
-          </div>
+          </div>)}
           <img src={data.image} className="category-background-img" />
           <div className="category-drop-shadow" />
         </div>
@@ -154,4 +155,4 @@ const CategoryCard = ({ data, isOddChild }) => {
   );
 };
 
-export default CategoryCard;
+export default SliderCard;

@@ -1,12 +1,17 @@
 import React from "react";
+import { useRouter } from "next/router";
 import { FiMail, FiMenu } from "react-icons/fi";
 
-const Header = ({ showTitle }) => {
-  const [showMenu, toggleMenu] = React.useState(false);
+const Header = ({ showTitle, toggleMenu, showMenu }) => {
+  const router = useRouter();
 
   const handleMenuClick = (e) => {
     toggleMenu(!showMenu);
-  }
+  };
+
+  const navigateToHome = (e) => {
+    router.push("/");
+  };
 
   return (
     <>
@@ -32,7 +37,7 @@ const Header = ({ showTitle }) => {
             position: absolute;
             width: 100%;
             padding: 24px;
-            display: ${showTitle ? 'flex' : 'none'};
+            display: ${showTitle ? "flex" : "none"};
             justify-content: center;
             align-items: center;
           }
@@ -41,6 +46,7 @@ const Header = ({ showTitle }) => {
             font-weight: bold;
             color: #fff;
             text-align: center;
+            cursor: pointer;
           }
           .icon-holder {
             width: 50px;
@@ -52,6 +58,7 @@ const Header = ({ showTitle }) => {
             justify-content: center;
             align-items: center;
             cursor: pointer;
+            position: relative;
           }
           .close-icon {
             background: #fff;
@@ -62,12 +69,12 @@ const Header = ({ showTitle }) => {
           }
           .close-icon:before,
           .close-icon:after {
-            content: '';
+            content: "";
             position: absolute;
             width: 18px;
             height: 1px;
             background: rgba(0, 0, 0, 1);
-            transition: all .25s ease-in-out;
+            transition: all 0.25s ease-in-out;
           }
           .email-icon {
             border: unset !important;
@@ -85,19 +92,34 @@ const Header = ({ showTitle }) => {
           }
           .compass-header-image {
             width: 32px;
-            filter: drop-shadow(4px 6px 16px #2B2019);
+            filter: drop-shadow(4px 6px 16px #2b2019);
             object-fit: contain;
             animation: compass-header-rotate 2.5s ease-in-out forwards;
           }
           @keyframes compass-header-rotate {
-            0%   {transform: rotate(-18deg);}
-            10%  {transform: rotate(12deg);}
-            40%  {transform: rotate(-25deg);}
-            60%  {transform: rotate(20deg);}
-            80%  {transform: rotate(0deg);}
-            100% {transform: rotate(-18deg);}
+            0% {
+              transform: rotate(-18deg);
+            }
+            10% {
+              transform: rotate(12deg);
+            }
+            40% {
+              transform: rotate(-25deg);
+            }
+            60% {
+              transform: rotate(20deg);
+            }
+            80% {
+              transform: rotate(0deg);
+            }
+            100% {
+              transform: rotate(-18deg);
+            }
           }
           @media (min-width: 981px) {
+            .header-wrapper {
+              padding: 24px 48px;
+            }
             .title-text {
               font-size: 24px;
             }
@@ -112,29 +134,38 @@ const Header = ({ showTitle }) => {
       <style jsx>
         {`
           .close-icon:before {
-            transform: ${showMenu ? 'rotate(45deg) translate(0px,0px)' : 'rotate(0deg) translate(0px,-4px)'};
+            transform: ${showMenu
+              ? "rotate(45deg) translate(0px,0px)"
+              : "rotate(0deg) translate(0px,-4px)"};
           }
           .close-icon:after {
-            transform: ${showMenu ? 'rotate(-45deg) translate(0px,0px);' : 'rotate(0deg) translate(0px,4px)'};
+            transform: ${showMenu
+              ? "rotate(-45deg) translate(0px,0px);"
+              : "rotate(0deg) translate(0px,4px)"};
           }
         `}
       </style>
       <div className="header-wrapper">
         <div className="header-container">
           <div className="scrapbook-banner">
-            <h1 className="title-text">
+            <h1 className="title-text" onClick={navigateToHome}>
               m
               <span className="compass-header-letter">
                 i
-              <span className="compass-header">
-                <img src="/images/banner/compass2.png" className="compass-header-image" />
-              </span>
+                <span className="compass-header">
+                  <img
+                    src="/images/banner/compass2.png"
+                    className="compass-header-image"
+                  />
+                </span>
               </span>
               ttirbabu
             </h1>
           </div>
-          <div className="icon-holder close-icon" onClick={handleMenuClick}>
-          </div>
+          <div
+            className="icon-holder close-icon"
+            onClick={handleMenuClick}
+          ></div>
           <div className="icon-holder email-icon">
             <FiMail />
           </div>
