@@ -1,15 +1,29 @@
-const menuOptions = [
-  { label: "home", key: "home", link: "" },
-  { label: "dev/science", key: "dev", link: "" },
-  { label: "travel", key: "travel", link: "" },
-  { label: "art", key: "art", link: "" },
-  { label: "abstract", key: "abstract", link: "" }
-];
+import React from "react";
+import { useRouter } from "next/router";
+
+import category from "../../__mocks__/category.data";
+
+const menuOptions = [{ label: "home", key: "home", link: "/" }, ...category];
 
 function Menu({ showMenu, toggleMenu }) {
+  const [hoverOption, setHoveredOption] = React.useState(menuOptions[0].key);
+  const router = useRouter();
+
   const navigateToPage = (menuKey) => {
+    const url = menuKey === menuOptions[0].key ? "/" : `/workspace/${menuKey}`;
+    router.push(url);
     toggleMenu(false);
   };
+
+  const handleHover = (menuKey) => {
+    setHoveredOption(menuKey);
+  };
+
+  React.useEffect(() => {
+    const query = router.query.key;
+    setHoveredOption(query ? query : menuOptions[0].key);
+  }, [showMenu]);
+
   return (
     <>
       <style jsx>
@@ -54,12 +68,13 @@ function Menu({ showMenu, toggleMenu }) {
           }
           .option-name {
             font-size: 24px;
-            font-weight: bold;
+            font-weight: 600;
             width: 100%;
             color: rgba(255, 255, 255, 0.5);
             transition: all 0.3s ease-in;
+            text-transform: capitalize;
           }
-          .option-name:hover {
+          .option-name.hovered-option {
             color: rgba(255, 255, 255, 1);
             transform: scale(1.1);
           }
@@ -68,7 +83,7 @@ function Menu({ showMenu, toggleMenu }) {
               padding-top: 24px;
             }
             .option-box {
-              padding-top: 120px;
+              padding-top: 64px;
             }
             .option-name {
               font-size: 32px;
@@ -87,8 +102,16 @@ function Menu({ showMenu, toggleMenu }) {
               className="option-container"
               key={data.key}
               onClick={() => navigateToPage(data.key)}
+              onMouseEnter={() => handleHover(data.key)}
+              onMouseLeave={() => handleHover("")}
             >
-              <div className="option-name">{data.label}</div>
+              <div
+                className={`option-name ${
+                  hoverOption === data.key ? "hovered-option" : ""
+                }`}
+              >
+                {data.label}
+              </div>
             </div>
           ))}
         </div>

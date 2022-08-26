@@ -62,7 +62,7 @@ const UserSection = () => {
         }
         .user-name {
           font-size: 32px;
-          font-weight: bolder;
+          font-weight: bold;
         }
         .user-detail {
           font-size: 20px;
@@ -107,13 +107,9 @@ const UserSection = () => {
           }
           .user-name {
             font-size: 48px;
-            font-weight: 900;
           }
           .user-detail {
-            padding: 14px 0;
-          }
-          .user-bio {
-            font-style: italic;
+            padding: 24px 0;
           }
           .user-email {
             padding: 31px 0;

@@ -76,6 +76,7 @@ function Intro({ navigateToBook, toggleHeader }) {
           .description-text {
             display: inline-block;
             font-size: 14px;
+            line-height: 18px;
             padding: 24px 0px;
             padding-bottom: 48px;
             width: 100%;
@@ -127,6 +128,7 @@ function Intro({ navigateToBook, toggleHeader }) {
             .description-text {
               width: 60%;
               font-size: 24px;
+              line-height: 48px;
             }
             .side-padding {
               display: inline-block;
