@@ -1,2 +1,2 @@
 # Personal Blog
-[Live](https://scraptemplate.netlify.app/)
+[Personal Blog - mittirbabu](https://mittirbabu.io/)
