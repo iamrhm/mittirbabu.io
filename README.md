@@ -1,2 +1,2 @@
-# scraptemplate
-[Live](https://scraptemplate.netlify.app/)
+# Personal Blog
+[Personal Blog - mittirbabu](https://mittirbabu.io/)
